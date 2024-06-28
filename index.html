@@ -193,7 +193,7 @@
                 const startDate = new Date(firstDayOfYear.setDate(firstDayOfYear.getDate() + daysOffset));
                 const endDate = new Date(startDate);
                 endDate.setDate(startDate.getDate() + 6);
-                document.getElementById('result').innerHTML = `Year: <b>${year}</b><br>Week Number: <b>${week}</b><br><br><br>Week ${week} of ${year} starts on ${startDate.toDateString()} and ends on ${endDate.toDateString()}`;
+                document.getElementById('result').innerHTML = /*`Year: <b>${year}</b><br>Week Number: <b>${week}</b>*/`Week ${week} of ${year} starts on:<br><b>${startDate.toDateString()}</b><br>and ends on <br><b>${endDate.toDateString()}</>`;
             } else {
                 document.getElementById('result').innerHTML = 'Please select both year and week number.';
             }
