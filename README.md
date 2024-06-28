@@ -21,7 +21,7 @@ This is a simple web-based week finder calculator. It allows users to input a ye
 
 This project is hosted using GitHub Pages. You can access the Week Finder at:
 
-[https://yourusername.github.io/your-repository-name/](https://yourusername.github.io/your-repository-name/)
+https://github.com/robvilla14/week_finder/blob/main/week_calculator2.html
 
 ## License
 
