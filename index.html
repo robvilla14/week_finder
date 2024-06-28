@@ -19,9 +19,9 @@
             font-size: 18px;
         }
         select, button {
-            width: 150px;
+            width: 200px;
             padding: 10px;
-            font-size: 14px;
+            font-size: 16px;
             margin-bottom: 20px;
         }
         button {
@@ -39,6 +39,7 @@
     <div class="form-group">
         <label for="year">Year:</label>
         <select id="year">
+            <!-- Add options for years -->
             <option value="">Select year</option>
 			<option value="2024">2026</option>
 			<option value="2024">2025</option>
@@ -122,7 +123,9 @@
     <div class="form-group">
         <label for="week">Week Number:</label>
         <select id="week">
+            <!-- Add options for weeks -->
             <option value="">Select week</option>
+            <!-- Week numbers from 1 to 52 (or 53) -->
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
@@ -184,16 +187,27 @@
     </div>
     <div id="result"></div>
     <script>
+        function getISOWeekDate(year, week) {
+            const simple = new Date(year, 0, 1 + (week - 1) * 7);
+            const dow = simple.getDay();
+            const ISOweekStart = simple;
+            if (dow <= 4)
+                ISOweekStart.setDate(simple.getDate() - simple.getDay() + 1);
+            else
+                ISOweekStart.setDate(simple.getDate() + 8 - simple.getDay());
+            const ISOweekEnd = new Date(ISOweekStart);
+            ISOweekEnd.setDate(ISOweekStart.getDate() + 6);
+            return { start: ISOweekStart, end: ISOweekEnd };
+        }
+
         function findWeek() {
             const year = document.getElementById('year').value;
             const week = document.getElementById('week').value;
             if (year && week) {
-                const firstDayOfYear = new Date(year, 0, 1);
-                const daysOffset = (week - 1) * 7 - (firstDayOfYear.getDay() - 1);
-                const startDate = new Date(firstDayOfYear.setDate(firstDayOfYear.getDate() + daysOffset));
-                const endDate = new Date(startDate);
-                endDate.setDate(startDate.getDate() + 6);
-                document.getElementById('result').innerHTML = /*`Year: <b>${year}</b><br>Week Number: <b>${week}</b>*/`Week ${week} of ${year} starts on:<br><b>${startDate.toDateString()}</b><br>and ends on <br><b>${endDate.toDateString()}</>`;
+                const dates = getISOWeekDate(year, week);
+                const startDate = dates.start;
+                const endDate = dates.end;
+                document.getElementById('result').innerHTML = /*<b>Year:</b> ${year}<br><b>Week Number:</b> ${week}*/`<br>The calendar week <b>${week}</b> in year <b>${year}</b> from<br><b>${startDate.toDateString()}<br>${endDate.toDateString()}</b>`;
             } else {
                 document.getElementById('result').innerHTML = 'Please select both year and week number.';
             }
