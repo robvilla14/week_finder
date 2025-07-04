@@ -9,7 +9,14 @@
             font-family: Arial, sans-serif;
             padding: 20px;
             text-align: center;
+            transition: background-color 0.3s, color 0.3s;
         }
+        
+        body.dark-mode {
+            background-color: #1a1a1a;
+            color: #e0e0e0;
+        }
+        
         .form-group {
             margin-bottom: 20px;
         }
@@ -23,191 +30,352 @@
             padding: 10px;
             font-size: 16px;
             margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background-color: white;
+            color: black;
+            transition: background-color 0.3s, color 0.3s, border-color 0.3s;
         }
+        
+        body.dark-mode select,
+        body.dark-mode button {
+            background-color: #333;
+            color: #e0e0e0;
+            border-color: #555;
+        }
+        
         button {
             width: auto;
             margin-right: 10px;
+            cursor: pointer;
         }
+        
+        button:hover {
+            background-color: #f0f0f0;
+        }
+        
+        body.dark-mode button:hover {
+            background-color: #444;
+        }
+        
         #result {
             margin-top: 20px;
             font-size: 18px;
         }
+        
+        .dark-mode-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: 2px solid #333;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        body.dark-mode .dark-mode-toggle {
+            border-color: #e0e0e0;
+        }
+        
+        .info-box {
+            max-width: 600px;
+            margin: 30px auto 20px auto;
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 14px;
+            line-height: 1.4;
+            transition: background-color 0.3s;
+        }
+        
+        .info-box.inspector {
+            background-color: #e8f4fd;
+        }
+        
+        body.dark-mode .info-box.inspector {
+            background-color: #1e3a5f;
+        }
+        
+        .info-box.standard {
+            background-color: #f5f5f5;
+        }
+        
+        body.dark-mode .info-box.standard {
+            background-color: #2a2a2a;
+        }
     </style>
 </head>
 <body>
+    <button class="dark-mode-toggle" onclick="toggleDarkMode()" title="Toggle Dark Mode">🌙</button>
+    
     <h1>Week Finder</h1>
-    <div class="form-group">
-        <label for="year">Year:</label>
-        <select id="year">
-            <!-- Add options for years -->
-            <option value="">Select year</option>
-			<option value="2024">2026</option>
-			<option value="2024">2025</option>
-            <option value="2024">2024</option>
-			<option value="2023">2023</option>
-			<option value="2022">2022</option>
-			<option value="2021">2021</option>
-			<option value="2020">2020</option>
-			<option value="2019">2019</option>
-			<option value="2018">2018</option>
-			<option value="2017">2017</option>
-			<option value="2016">2016</option>
-			<option value="2015">2015</option>
-			<option value="2014">2014</option>
-			<option value="2013">2013</option>
-			<option value="2012">2012</option>
-			<option value="2011">2011</option>
-			<option value="2010">2010</option>
-			<option value="2009">2009</option>
-			<option value="2008">2008</option>
-			<option value="2007">2007</option>
-			<option value="2006">2006</option>
-			<option value="2005">2005</option>
-			<option value="2004">2004</option>
-			<option value="2003">2003</option>
-			<option value="2002">2002</option>
-			<option value="2001">2001</option>
-			<option value="2000">2000</option>
-			<option value="1999">1999</option>
-			<option value="1998">1998</option>
-			<option value="1997">1997</option>
-			<option value="1996">1996</option>
-			<option value="1995">1995</option>
-			<option value="1994">1994</option>
-			<option value="1993">1993</option>
-			<option value="1992">1992</option>
-			<option value="1991">1991</option>
-			<option value="1990">1990</option>
-			<option value="1989">1989</option>
-			<option value="1988">1988</option>
-			<option value="1987">1987</option>
-			<option value="1986">1986</option>
-			<option value="1985">1985</option>
-			<option value="1984">1984</option>
-			<option value="1983">1983</option>
-			<option value="1982">1982</option>
-			<option value="1981">1981</option>
-			<option value="1980">1980</option>
-			<option value="1979">1979</option>
-			<option value="1978">1978</option>
-			<option value="1977">1977</option>
-			<option value="1976">1976</option>
-			<option value="1975">1975</option>
-			<option value="1974">1974</option>
-			<option value="1973">1973</option>
-			<option value="1972">1972</option>
-			<option value="1971">1971</option>
-			<option value="1970">1970</option>
-			<option value="1969">1969</option>
-			<option value="1968">1968</option>
-			<option value="1967">1967</option>
-			<option value="1966">1966</option>
-			<option value="1965">1965</option>
-			<option value="1964">1964</option>
-			<option value="1963">1963</option>
-			<option value="1962">1962</option>
-			<option value="1961">1961</option>
-			<option value="1960">1960</option>
-			<option value="1959">1959</option>
-			<option value="1958">1958</option>
-			<option value="1957">1957</option>
-			<option value="1956">1956</option>
-			<option value="1955">1955</option>
-			<option value="1954">1954</option>
-			<option value="1953">1953</option>
-			<option value="1952">1952</option>
-			<option value="1951">1951</option>
-			<option value="1950">1950</option>
-        </select>
-    </div>
-    <div class="form-group">
-        <label for="week">Week Number:</label>
-        <select id="week">
-            <!-- Add options for weeks -->
-            <option value="">Select week</option>
-            <!-- Week numbers from 1 to 52 (or 53) -->
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-            <option value="9">9</option>
-            <option value="10">10</option>
-            <option value="11">11</option>
-            <option value="12">12</option>
-            <option value="13">13</option>
-            <option value="14">14</option>
-            <option value="15">15</option>
-            <option value="16">16</option>
-            <option value="17">17</option>
-            <option value="18">18</option>
-            <option value="19">19</option>
-            <option value="20">20</option>
-            <option value="21">21</option>
-            <option value="22">22</option>
-            <option value="23">23</option>
-            <option value="24">24</option>
-            <option value="25">25</option>
-            <option value="26">26</option>
-            <option value="27">27</option>
-            <option value="28">28</option>
-            <option value="29">29</option>
-            <option value="30">30</option>
-            <option value="31">31</option>
-            <option value="32">32</option>
-            <option value="33">33</option>
-            <option value="34">34</option>
-            <option value="35">35</option>
-            <option value="36">36</option>
-            <option value="37">37</option>
-            <option value="38">38</option>
-            <option value="39">39</option>
-            <option value="40">40</option>
-            <option value="41">41</option>
-            <option value="42">42</option>
-            <option value="43">43</option>
-            <option value="44">44</option>
-            <option value="45">45</option>
-            <option value="46">46</option>
-            <option value="47">47</option>
-            <option value="48">48</option>
-            <option value="49">49</option>
-            <option value="50">50</option>
-            <option value="51">51</option>
-            <option value="52">52</option>
-            <option value="53">53</option>
-        </select>
+    <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-bottom: 20px;">
+        <div class="form-group" style="margin-bottom: 0;">
+            <label for="year">Year:</label>
+            <select id="year">
+                <!-- Add options for years -->
+                <option value="">Select year</option>
+                <option value="2030">2030</option>
+                <option value="2029">2029</option>
+                <option value="2028">2028</option>
+                <option value="2027">2027</option>
+                <option value="2026">2026</option>
+                <option value="2025">2025</option>
+                <option value="2024">2024</option>
+                <option value="2023">2023</option>
+                <option value="2022">2022</option>
+                <option value="2021">2021</option>
+                <option value="2020">2020</option>
+                <option value="2019">2019</option>
+                <option value="2018">2018</option>
+                <option value="2017">2017</option>
+                <option value="2016">2016</option>
+                <option value="2015">2015</option>
+                <option value="2014">2014</option>
+                <option value="2013">2013</option>
+                <option value="2012">2012</option>
+                <option value="2011">2011</option>
+                <option value="2010">2010</option>
+                <option value="2009">2009</option>
+                <option value="2008">2008</option>
+                <option value="2007">2007</option>
+                <option value="2006">2006</option>
+                <option value="2005">2005</option>
+                <option value="2004">2004</option>
+                <option value="2003">2003</option>
+                <option value="2002">2002</option>
+                <option value="2001">2001</option>
+                <option value="2000">2000</option>
+                <option value="1999">1999</option>
+                <option value="1998">1998</option>
+                <option value="1997">1997</option>
+                <option value="1996">1996</option>
+                <option value="1995">1995</option>
+                <option value="1994">1994</option>
+                <option value="1993">1993</option>
+                <option value="1992">1992</option>
+                <option value="1991">1991</option>
+                <option value="1990">1990</option>
+                <option value="1989">1989</option>
+                <option value="1988">1988</option>
+                <option value="1987">1987</option>
+                <option value="1986">1986</option>
+                <option value="1985">1985</option>
+                <option value="1984">1984</option>
+                <option value="1983">1983</option>
+                <option value="1982">1982</option>
+                <option value="1981">1981</option>
+                <option value="1980">1980</option>
+                <option value="1979">1979</option>
+                <option value="1978">1978</option>
+                <option value="1977">1977</option>
+                <option value="1976">1976</option>
+                <option value="1975">1975</option>
+                <option value="1974">1974</option>
+                <option value="1973">1973</option>
+                <option value="1972">1972</option>
+                <option value="1971">1971</option>
+                <option value="1970">1970</option>
+                <option value="1969">1969</option>
+                <option value="1968">1968</option>
+                <option value="1967">1967</option>
+                <option value="1966">1966</option>
+                <option value="1965">1965</option>
+                <option value="1964">1964</option>
+                <option value="1963">1963</option>
+                <option value="1962">1962</option>
+                <option value="1961">1961</option>
+                <option value="1960">1960</option>
+                <option value="1959">1959</option>
+                <option value="1958">1958</option>
+                <option value="1957">1957</option>
+                <option value="1956">1956</option>
+                <option value="1955">1955</option>
+                <option value="1954">1954</option>
+                <option value="1953">1953</option>
+                <option value="1952">1952</option>
+                <option value="1951">1951</option>
+                <option value="1950">1950</option>
+            </select>
+        </div>
+        <div class="form-group" style="margin-bottom: 0;">
+            <label for="week">Week Number:</label>
+            <select id="week">
+                <!-- Add options for weeks -->
+                <option value="">Select week</option>
+                <!-- Week numbers from 1 to 52 (or 53) -->
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+                <option value="13">13</option>
+                <option value="14">14</option>
+                <option value="15">15</option>
+                <option value="16">16</option>
+                <option value="17">17</option>
+                <option value="18">18</option>
+                <option value="19">19</option>
+                <option value="20">20</option>
+                <option value="21">21</option>
+                <option value="22">22</option>
+                <option value="23">23</option>
+                <option value="24">24</option>
+                <option value="25">25</option>
+                <option value="26">26</option>
+                <option value="27">27</option>
+                <option value="28">28</option>
+                <option value="29">29</option>
+                <option value="30">30</option>
+                <option value="31">31</option>
+                <option value="32">32</option>
+                <option value="33">33</option>
+                <option value="34">34</option>
+                <option value="35">35</option>
+                <option value="36">36</option>
+                <option value="37">37</option>
+                <option value="38">38</option>
+                <option value="39">39</option>
+                <option value="40">40</option>
+                <option value="41">41</option>
+                <option value="42">42</option>
+                <option value="43">43</option>
+                <option value="44">44</option>
+                <option value="45">45</option>
+                <option value="46">46</option>
+                <option value="47">47</option>
+                <option value="48">48</option>
+                <option value="49">49</option>
+                <option value="50">50</option>
+                <option value="51">51</option>
+                <option value="52">52</option>
+                <option value="53">53</option>
+            </select>
+        </div>
     </div>
     <div>
         <button onclick="findWeek()">Find Week</button>
         <button onclick="clearFields()">Clear</button>
     </div>
     <div id="result"></div>
+    
+    <div class="info-box inspector">
+        <strong>🏠 For Home Inspectors:</strong> Use this tool to determine manufacture dates from equipment serial numbers (HVAC systems, water heaters, etc.) when the manufacturer uses week-based dating codes.
+    </div>
+    
+    <div class="info-box standard">
+        <strong>ISO 8601 Standard:</strong> All weeks start on <strong>Monday</strong> and end on <strong>Sunday</strong>.<br>
+        Please note that there are multiple systems for week numbering. This is the ISO week date standard (ISO-8601). Other systems use weeks starting on Sunday (US) or Saturday (Islamic).
+    </div>
     <script>
+        function toggleDarkMode() {
+            const body = document.body;
+            const toggle = document.querySelector('.dark-mode-toggle');
+            
+            body.classList.toggle('dark-mode');
+            
+            // Update toggle icon
+            if (body.classList.contains('dark-mode')) {
+                toggle.textContent = '☀️';
+                toggle.title = 'Switch to Light Mode';
+                // Store preference
+                localStorage.setItem('darkMode', 'enabled');
+            } else {
+                toggle.textContent = '🌙';
+                toggle.title = 'Toggle Dark Mode';
+                // Store preference
+                localStorage.setItem('darkMode', 'disabled');
+            }
+        }
+
+        // Check for saved dark mode preference or default to light mode
+        document.addEventListener('DOMContentLoaded', function() {
+            const darkMode = localStorage.getItem('darkMode');
+            const toggle = document.querySelector('.dark-mode-toggle');
+            
+            if (darkMode === 'enabled') {
+                document.body.classList.add('dark-mode');
+                toggle.textContent = '☀️';
+                toggle.title = 'Switch to Light Mode';
+            }
+        });
+
+        // Get the maximum number of weeks in a given year (52 or 53)
+        function getWeeksInYear(year) {
+            const jan4 = new Date(year, 0, 4);
+            const jan4Day = jan4.getDay() || 7; // Convert Sunday (0) to 7
+            const week1Start = new Date(jan4);
+            week1Start.setDate(jan4.getDate() - jan4Day + 1); // Monday of week 1
+            
+            const nextYearJan4 = new Date(year + 1, 0, 4);
+            const nextYearJan4Day = nextYearJan4.getDay() || 7;
+            const nextYearWeek1Start = new Date(nextYearJan4);
+            nextYearWeek1Start.setDate(nextYearJan4.getDate() - nextYearJan4Day + 1);
+            
+            const diffTime = nextYearWeek1Start - week1Start;
+            const diffWeeks = diffTime / (7 * 24 * 60 * 60 * 1000);
+            return Math.round(diffWeeks);
+        }
+
+        // Get ISO week dates using proper ISO 8601 calculation
         function getISOWeekDate(year, week) {
-            const simple = new Date(year, 0, 1 + (week - 1) * 7);
-            const dow = simple.getDay();
-            const ISOweekStart = simple;
-            if (dow <= 4)
-                ISOweekStart.setDate(simple.getDate() - simple.getDay() + 1);
-            else
-                ISOweekStart.setDate(simple.getDate() + 8 - simple.getDay());
-            const ISOweekEnd = new Date(ISOweekStart);
-            ISOweekEnd.setDate(ISOweekStart.getDate() + 6);
-            return { start: ISOweekStart, end: ISOweekEnd };
+            // Check if the week number is valid for this year
+            const maxWeeks = getWeeksInYear(year);
+            if (week < 1 || week > maxWeeks) {
+                return null;
+            }
+
+            // Find January 4th of the year (always in week 1)
+            const jan4 = new Date(year, 0, 4);
+            const jan4Day = jan4.getDay() || 7; // Convert Sunday (0) to 7 for ISO format
+            
+            // Find the Monday of week 1 (the week containing January 4th)
+            const week1Monday = new Date(jan4);
+            week1Monday.setDate(jan4.getDate() - jan4Day + 1);
+            
+            // Calculate the Monday of the requested week
+            const weekMonday = new Date(week1Monday);
+            weekMonday.setDate(week1Monday.getDate() + (week - 1) * 7);
+            
+            // Calculate the Sunday of that week
+            const weekSunday = new Date(weekMonday);
+            weekSunday.setDate(weekMonday.getDate() + 6);
+            
+            return { start: weekMonday, end: weekSunday };
         }
 
         function findWeek() {
-            const year = document.getElementById('year').value;
-            const week = document.getElementById('week').value;
+            const year = parseInt(document.getElementById('year').value);
+            const week = parseInt(document.getElementById('week').value);
+            
             if (year && week) {
                 const dates = getISOWeekDate(year, week);
+                
+                if (dates === null) {
+                    const maxWeeks = getWeeksInYear(year);
+                    document.getElementById('result').innerHTML = 
+                        `<br><span style="color: red;">Invalid week number!</span><br>Year ${year} only has ${maxWeeks} weeks.`;
+                    return;
+                }
+                
                 const startDate = dates.start;
                 const endDate = dates.end;
-                document.getElementById('result').innerHTML = /*<b>Year:</b> ${year}<br><b>Week Number:</b> ${week}*/`<br>The calendar week <b>${week}</b> in year <b>${year}</b> from<br><b>${startDate.toDateString()}<br>${endDate.toDateString()}</b>`;
+                const maxWeeks = getWeeksInYear(year);
+                
+                document.getElementById('result').innerHTML = 
+                    `<br>ISO Week <b>${week}</b> of <b>${year}</b> (${maxWeeks} weeks total)<br>` +
+                    `<b style="color: red;">Monday: ${startDate.toDateString()}<br>` +
+                    `Sunday: ${endDate.toDateString()}</b>`;
             } else {
                 document.getElementById('result').innerHTML = 'Please select both year and week number.';
             }
@@ -218,6 +386,30 @@
             document.getElementById('week').value = '';
             document.getElementById('result').innerHTML = '';
         }
+
+        // Update week options based on selected year
+        document.getElementById('year').addEventListener('change', function() {
+            const year = parseInt(this.value);
+            if (year) {
+                const maxWeeks = getWeeksInYear(year);
+                const weekSelect = document.getElementById('week');
+                const currentWeek = weekSelect.value;
+                
+                // Enable/disable week 53 option
+                const week53Option = weekSelect.querySelector('option[value="53"]');
+                if (maxWeeks === 53) {
+                    week53Option.style.display = 'block';
+                    week53Option.disabled = false;
+                } else {
+                    week53Option.style.display = 'none';
+                    week53Option.disabled = true;
+                    // Clear week selection if week 53 was selected
+                    if (currentWeek === '53') {
+                        weekSelect.value = '';
+                    }
+                }
+            }
+        });
     </script>
 </body>
 </html>
