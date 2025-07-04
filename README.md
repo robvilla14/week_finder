@@ -1,39 +1,36 @@
-# Week Finder
+Week Finder
+A mobile-friendly ISO 8601 week calculator designed specifically for home inspectors to determine equipment manufacture dates from serial numbers.
 
-This is a simple web-based week finder calculator. It allows users to input a year and a week number, and it returns the start and end dates of that specific week.
+Features
+•	ISO 8601 Compliant - Follows international week numbering standards
+•	Mobile Optimized - Responsive design for field use
+•	Dark Mode  Toggle - for various lighting conditions
+•	Equipment Focus - Designed for HVAC and water heater serial number dating
+•	Year Range - Supports years 19502030
+•	Week Validation - Automatically handles 52/53 week years
+•	Instant Results - No page reload needed
 
-## Features
+Use Case
+Home inspectors often need to determine equipment age from serial numbers. Many manufacturers use weekbased dating codes (e.g., positions 12 for week, 34 for year). This tool converts those week numbers into actual calendar dates.
 
-- Select a year from a dropdown list.
-- Select a week number from a dropdown list.
-- Display the start and end dates of the selected week.
-- Clear the input fields and result with a single click.
+Usage
+1.	Open the Week Finder
+2.	Select year and week number from dropdowns
+3.	Click "Find Week" to see the date range
+4.	Use "Clear" to reset for next lookup
+5.	Toggle dark mode with the 🌙/☀️ button
 
-## Usage
+Technical Details
+•	Standard: ISO 8601 week date system
+•	Week Start: Monday
+•	Week 1 Rule: First week containing January 4th 
+•	Cross-year Handling: Properly manages weeks spanning December/January
 
-1. Open the Week Finder web page.
-2. Select a year from the "Year" dropdown list.
-3. Select a week number from the "Week Number" dropdown list.
-4. Click the "Find Week" button to display the start and end dates of the selected week.
-5. Click the "Clear" button to reset the input fields and clear the result.
+Live Demo
+https://robvilla14.github.io/week_finder/
 
-## Hosting
+Contributing
+Pull requests welcome! Please open an issue first to discuss changes.
 
-This project is hosted using GitHub Pages. You can access the Week Finder at:
-
-[https://robvilla14.github.io/week_finder/](https://robvilla14.github.io/week_finder/)
-
-## License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
-
-## Contributions
-
-Contributions are welcome! Please feel free to submit a pull request or open an issue to discuss any changes or improvements.
-
-## Contact
-
-For any questions or suggestions, please contact:
-
-- Robert Villa
-- Email: robvilla1@hotmail.com
+License
+MIT License - see LICENSE file for details.
